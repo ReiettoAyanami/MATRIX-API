@@ -66,7 +66,6 @@ class SerialData:
         self.dataBuffer = DataBuffer([])
 
         self.windowRunning = False
-        self.executor = Thread(target=self.communicate)
 
 
 

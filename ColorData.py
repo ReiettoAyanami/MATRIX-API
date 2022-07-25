@@ -1,29 +1,9 @@
 
 class ColorData:
-    
-    """
-    An object used to describe what data needs to be sent to the arduino.
 
-    Attributes:
-        idx: (int) the index of the pixel that needs to be lit up.
-        color: (tuple[int]) the color that the pixel at the given index will assume.
+    def __init__(self, index:int = 0, color:tuple[int] = (0,0,0)) -> None:
 
-    """
-
-
-    def __init__(self, idx:int = 0, color:tuple[int] = (0,0,0)) -> None:
-
-        """
-        Inits the class.
-
-        Args:
-
-        idx: the index of the pixel that needs to be lit up.
-        color: the color that the pixel at the given index will assume.
-
-        """
-
-        self.__idx = idx
+        self.__index = index
         self.__color = color
 
 
@@ -33,7 +13,7 @@ class ColorData:
         Transforms this object's attributes into an encoded string that will be parsed and interpreted by the arduino.
 
         Args:
-            idx : the index of the element you want to encode.
+            index : the index of the element you want to encode.
 
         Returns:
             A string which is formatted like this:
@@ -51,7 +31,7 @@ class ColorData:
 
 
         
-        attr = [self.__idx] + [self.__color[i] for i in range(len(self.__color))]
+        attr = [self.__index] + [self.__color[i] for i in range(len(self.__color))]
         data = '.'
 
         
@@ -75,17 +55,17 @@ class ColorData:
         return data.encode()
 
     @property
-    def idx(self) -> int:
-        return self.__idx
+    def index(self) -> int:
+        return self.__index
 
-    @idx.setter
-    def idx(self, new_idx:int = 0) -> None:
-        self.__idx = new_idx
+    @index.setter
+    def index(self, newIndex:int = 0) -> None:
+        self.__index = newIndex
     
     @property
     def color(self) -> tuple:
         return self.__color
 
     @color.setter
-    def color(self, new_color:tuple[int] = (0,0,0)) -> None:
-        self.__color = new_color
+    def color(self, newColor:tuple[int] = (0,0,0)) -> None:
+        self.__color = newColor
